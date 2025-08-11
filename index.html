@@ -1,26 +1,24 @@
 # pawscarehub
-Website for PawsCare Hub — Dog rescue and donation platform
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PawsCare Hub</title>
+  <title>PawsCare Hub - Saving Lives One Paw at a Time</title>
   <style>
-    /* Basic Reset */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
     body {
-      background: #f9f9f9;
+      background: #f5f7fa;
       color: #333;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-
     header {
       background: #2d89ef;
       color: white;
@@ -30,133 +28,157 @@ Website for PawsCare Hub — Dog rescue and donation platform
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-
     header h1 {
-      font-size: 24px;
+      font-size: 28px;
       letter-spacing: 2px;
+      font-weight: 900;
+      cursor: default;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin-left: 25px;
       font-weight: 600;
       transition: color 0.3s ease;
+      font-size: 16px;
     }
-
     nav a:hover {
       color: #ffe600;
     }
-
     main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 10px;
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+      flex-grow: 1;
     }
-
     section {
-      margin-bottom: 50px;
       background: white;
-      padding: 25px 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+      margin-bottom: 50px;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
     }
-
     h2 {
       margin-bottom: 20px;
       color: #2d89ef;
-      border-bottom: 3px solid #2d89ef;
-      padding-bottom: 6px;
-      font-weight: 700;
+      border-bottom: 4px solid #2d89ef;
+      padding-bottom: 8px;
+      font-weight: 800;
+      font-size: 28px;
     }
-
     p {
-      margin-bottom: 15px;
-      font-size: 16px;
+      margin-bottom: 18px;
+      font-size: 18px;
+      color: #444;
     }
-
-    /* Donate button style */
-    <section id="donate">
-  <h2>Donate</h2>
-  <p>Your donations help us provide food, shelter, medical care, and rehabilitation for rescued dogs. Every contribution, big or small, makes a huge difference.</p>
-
-  <p><strong>Donate via UPI (India):</strong> <span style="color:#2d89ef; font-weight:700;">8824486181@ptyes</span></p>
-
-  <p><strong>Bank Transfer Details (India):</strong></p>
-  <ul>
-    <li><strong>Account Name:</strong> PawsCare Hub</li>
-    <li><strong>Account Number:</strong> 1234567890</li>
-    <li><strong>IFSC Code:</strong> ABCD0123456</li>
-  </ul>
-
-  <p><strong>Donate via PayPal (International):</strong></p>
-  <a href="https://paypal.me/pawscarehub" target="_blank" class="btn-donate">Donate via PayPal</a>
-
-  <a href="#contact" class="btn-donate" style="background:#28a745; margin-top:15px;">Contact Us for More Options</a>
-</section>
-
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      font-size: 17px;
+      color: #555;
     }
-
-    .btn-donate:hover {
-      background: #ff3b2f;
-    }
-
-    /* Contact form */
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    input, textarea {
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 15px;
-      resize: vertical;
-    }
-
-    input[type="submit"] {
-      background: #2d89ef;
+    .btn-primary, .btn-donate {
+      background: #ff6f61;
       color: white;
+      padding: 14px 36px;
       border: none;
+      border-radius: 30px;
       cursor: pointer;
       font-weight: 700;
-      font-size: 16px;
-      border-radius: 25px;
-      padding: 12px;
+      font-size: 18px;
       transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      user-select: none;
     }
-
-    input[type="submit"]:hover {
-      background: #1b5ea8;
+    .btn-primary:hover, .btn-donate:hover {
+      background: #e64b43;
     }
-
     footer {
-      text-align: center;
-      padding: 20px 10%;
       background: #2d89ef;
       color: white;
-      font-size: 14px;
-      margin-top: 40px;
+      text-align: center;
+      padding: 25px 10%;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+      margin-top: auto;
     }
-
+    /* Donate Modal Styles */
+    #donateModal {
+      display: none;
+      position: fixed;
+      z-index: 1100;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+    #donateModal .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 30px 35px;
+      border-radius: 15px;
+      max-width: 400px;
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.2);
+      text-align: center;
+      position: relative;
+    }
+    #donateModal h3 {
+      margin-bottom: 20px;
+      color: #2d89ef;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    #donateModal button {
+      margin: 10px 0;
+      width: 100%;
+    }
+    #donateModal .close-btn {
+      position: absolute;
+      top: 12px; right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    #donateModal .close-btn:hover {
+      color: #ff6f61;
+    }
     /* Responsive */
     @media(max-width: 600px) {
       header {
         flex-direction: column;
         text-align: center;
       }
-
       nav a {
-        margin: 10px 15px 0 15px;
+        margin: 12px 15px 0 15px;
+      }
+      main {
+        margin: 30px 10px 50px;
+        padding: 0 10px;
+      }
+      section {
+        padding: 25px 20px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+      .btn-primary, .btn-donate {
+        padding: 12px 28px;
+        font-size: 16px;
+      }
+      #donateModal .modal-content {
+        margin: 30% 10px;
+        padding: 25px 20px;
       }
     }
   </style>
@@ -168,7 +190,7 @@ Website for PawsCare Hub — Dog rescue and donation platform
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About Us</a>
-    <a href="#services">Services</a>
+    <a href="#services">Our Work</a>
     <a href="#donate">Donate</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -177,46 +199,38 @@ Website for PawsCare Hub — Dog rescue and donation platform
 <main>
 
   <section id="home">
-    <h2>Welcome to PawsCare Hub</h2>
-    <p>Your trusted place for dog rescue, care, and treatment. We work every day to help dogs in need find a loving home and receive the best medical attention.</p>
-    <p>Join us in making a difference. Together, we can save lives.</p>
-    <a href="#donate" class="btn-donate">Donate Now</a>
+    <h2>Saving Lives One Paw at a Time</h2>
+    <p>At <strong>PawsCare Hub</strong>, every day we rescue abandoned, injured, and helpless dogs. Our dedicated team works tirelessly to provide medical treatment, food, shelter, and a chance at a better life.</p>
+    <p>So far, we've treated over <strong>350 dogs</strong> and successfully helped <strong>120+ dogs find loving homes</strong>. But the journey is far from over — your support keeps the hope alive.</p>
+    <button class="btn-primary" onclick="openDonateModal()">Donate Now & Help Save More Lives</button>
   </section>
 
   <section id="about">
     <h2>About Us</h2>
-    <p>PawsCare Hub is dedicated to rescuing abandoned and injured dogs and providing them with proper treatment and loving care. Our mission is to create a safe environment and promote adoption to give every dog a second chance.</p>
-    <p>We are a passionate team of animal lovers committed to making a positive impact in the community.</p>
+    <p>Founded in 2020, PawsCare Hub is a passionate community of animal lovers and volunteers dedicated to animal welfare and rescue. We believe every dog deserves a second chance, regardless of age, breed, or condition.</p>
+    <p>Our mission is not just rescue but rehabilitation and responsible adoption, educating the community about compassionate pet ownership and prevention of cruelty.</p>
   </section>
 
   <section id="services">
-    <h2>Our Services</h2>
-    <p><strong>Treatment & Care:</strong> We offer vaccinations, wound care, parasite control, and emergency medical treatment to ensure the health of rescued dogs.</p>
-    <p><strong>Adoption:</strong> We facilitate the adoption process, helping loving families find their perfect canine companion.</p>
-    <p><strong>Awareness:</strong> Educating the community about responsible pet ownership and animal welfare.</p>
+    <h2>Our Work & Services</h2>
+    <ul>
+      <li><strong>Medical Treatment:</strong> Vaccinations, wound care, parasite control, surgeries, and emergency care.</li>
+      <li><strong>Rehabilitation:</strong> Nutrition, shelter, and behavioral training to prepare dogs for adoption.</li>
+      <li><strong>Adoption Facilitation:</strong> Connecting loving families with rescued dogs and thorough vetting.</li>
+      <li><strong>Community Outreach:</strong> Awareness campaigns, school programs, and animal welfare workshops.</li>
+      <li><strong>Emergency Rescue:</strong> Rapid response team for injured or abandoned dogs in distress.</li>
+    </ul>
   </section>
 
   <section id="donate">
-    <h2>Donate</h2>
-    <p>Your donations help us provide food, shelter, medical care, and rehabilitation for rescued dogs. Every contribution, big or small, makes a huge difference.</p>
-
-    <p><strong>Donate via UPI (India):</strong> <span style="color:#2d89ef; font-weight:700;">12345@upi</span></p>
-
-    <p><strong>Bank Transfer Details (India):</strong></p>
-    <ul>
-      <li><strong>Account Name:</strong> PawsCare Hub</li>
-      <li><strong>Account Number:</strong> 1234567890</li>
-      <li><strong>IFSC Code:</strong> ABCD0123456</li>
-    </ul>
-
-    <p><strong>Donate via PayPal (International):</strong></p>
-    <a href="https://www.paypal.me/YourPayPalID" target="_blank" class="btn-donate">Donate via PayPal</a>
-
-    <a href="#contact" class="btn-donate" style="background:#28a745; margin-top:15px;">Contact Us for More Options</a>
+    <h2>Donate & Make a Difference</h2>
+    <p>Your generosity helps us continue providing life-saving care and hope to countless dogs. Every rupee goes towards food, medicine, shelter, and adoption support.</p>
+    <button class="btn-donate" onclick="openDonateModal()">Donate Now</button>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
+    <p>If you want to volunteer, adopt, or learn more about our work, please reach out to us.</p>
     <form onsubmit="alert('Thank you for contacting PawsCare Hub! We will get back to you soon.'); return false;">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required />
@@ -225,7 +239,7 @@ Website for PawsCare Hub — Dog rescue and donation platform
       <input type="email" id="email" name="email" required />
 
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
       <input type="submit" value="Send Message" />
     </form>
@@ -236,6 +250,33 @@ Website for PawsCare Hub — Dog rescue and donation platform
 <footer>
   &copy; 2025 PawsCare Hub. All rights reserved.
 </footer>
+
+<!-- Donate Modal -->
+<div id="donateModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeDonateModal()">&times;</button>
+    <h3>Choose Your Donation Method</h3>
+    <button class="btn-donate" onclick="window.open('https://paypal.me/pawscarehub', '_blank')">Donate via PayPal</button>
+    <p style="margin: 15px 0; font-weight: 600;">OR</p>
+    <p><strong>UPI ID:</strong> <span style="color:#2d89ef; font-weight:700;">8824486181@ptyes</span></p>
+  </div>
+</div>
+
+<script>
+  function openDonateModal() {
+    document.getElementById('donateModal').style.display = 'block';
+  }
+  function closeDonateModal() {
+    document.getElementById('donateModal').style.display = 'none';
+  }
+  // Close modal on outside click
+  window.onclick = function(event) {
+    const modal = document.getElementById('donateModal');
+    if (event.target === modal) {
+      closeDonateModal();
+    }
+  }
+</script>
 
 </body>
 </html>
