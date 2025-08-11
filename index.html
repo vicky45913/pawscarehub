@@ -1,18 +1,19 @@
 # pawscarehub
 
-      <!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PawsCare Hub - Saving Lives One Paw at a Time</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     body {
-      background: #f5f7fa;
+      background: #f9fafc;
       color: #333;
       line-height: 1.6;
       min-height: 100vh;
@@ -20,7 +21,7 @@
       flex-direction: column;
     }
     header {
-      background: #2d89ef;
+      background: #0d47a1;
       color: white;
       padding: 20px 10%;
       display: flex;
@@ -29,156 +30,351 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     }
     header h1 {
-      font-size: 28px;
+      font-size: 32px;
       letter-spacing: 2px;
       font-weight: 900;
       cursor: default;
+      user-select: none;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
+      margin-left: 30px;
       font-weight: 600;
-      transition: color 0.3s ease;
       font-size: 16px;
+      transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #ffe600;
+      color: #ffca28;
     }
-    main {
-      max-width: 1100px;
-      margin: 40px auto 60px;
+    /* Hero Banner */
+    #hero {
+      background: url('images/hero_dog.jpg') no-repeat center center/cover;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
       padding: 0 20px;
-      flex-grow: 1;
-    }
-    section {
-      background: white;
-      margin-bottom: 50px;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: #2d89ef;
-      border-bottom: 4px solid #2d89ef;
-      padding-bottom: 8px;
-      font-weight: 800;
-      font-size: 28px;
-    }
-    p {
-      margin-bottom: 18px;
-      font-size: 18px;
-      color: #444;
-    }
-    ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
-      font-size: 17px;
-      color: #555;
-    }
-    .btn-primary, .btn-donate {
-      background: #ff6f61;
-      color: white;
-      padding: 14px 36px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 18px;
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 15px;
-      user-select: none;
-    }
-    .btn-primary:hover, .btn-donate:hover {
-      background: #e64b43;
-    }
-    footer {
-      background: #2d89ef;
-      color: white;
-      text-align: center;
-      padding: 25px 10%;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
-      margin-top: auto;
-    }
-    /* Donate Modal Styles */
-    #donateModal {
-      display: none;
-      position: fixed;
-      z-index: 1100;
-      left: 0; top: 0; width: 100%; height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(3px);
-    }
-    #donateModal .modal-content {
-      background: white;
-      margin: 10% auto;
-      padding: 30px 35px;
-      border-radius: 15px;
-      max-width: 400px;
-      box-shadow: 0 12px 30px rgb(0 0 0 / 0.2);
-      text-align: center;
       position: relative;
     }
-    #donateModal h3 {
-      margin-bottom: 20px;
-      color: #2d89ef;
-      font-size: 24px;
-      font-weight: 700;
-    }
-    #donateModal button {
-      margin: 10px 0;
-      width: 100%;
-    }
-    #donateModal .close-btn {
+    #hero::after {
+      content: "";
       position: absolute;
-      top: 12px; right: 15px;
-      background: transparent;
-      border: none;
-      font-size: 28px;
-      font-weight: 700;
-      color: #888;
-      cursor: pointer;
-      transition: color 0.2s ease;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(13, 71, 161, 0.65);
+      z-index: 1;
     }
-    #donateModal .close-btn:hover {
-      color: #ff6f61;
+    #hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    #hero-content h2 {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    #hero-content p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      font-weight: 500;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    #hero-content button {
+      background: #ffca28;
+      color: #0d47a1;
+      border: none;
+      padding: 15px 45px;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgb(255 202 40 / 0.6);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    #hero-content button:hover {
+      background: #ffc107cc;
+    }
+    /* Stats Section */
+    #stats {
+      background: white;
+      padding: 60px 10%;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.05);
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .stat-box {
+      flex: 1 1 160px;
+    }
+    .stat-box h3 {
+      font-size: 44px;
+      color: #0d47a1;
+      font-weight: 900;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    .stat-box p {
+      font-size: 18px;
+      font-weight: 600;
+      color: #555;
+      user-select: none;
+    }
+    /* About Section */
+    #about {
+      max-width: 900px;
+      margin: 70px auto 80px;
+      padding: 0 20px;
+    }
+    #about h2 {
+      font-size: 34px;
+      color: #0d47a1;
+      margin-bottom: 25px;
+      font-weight: 900;
+      text-align: center;
+      user-select: none;
+    }
+    #about p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+    /* Volunteer Section */
+    #volunteer {
+      background: #0d47a1;
+      color: white;
+      padding: 60px 10%;
+      text-align: center;
+      user-select: none;
+    }
+    #volunteer h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    #volunteer p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+    #volunteer button {
+      background: #ffca28;
+      color: #0d47a1;
+      border: none;
+      padding: 14px 40px;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgb(255 202 40 / 0.6);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    #volunteer button:hover {
+      background: #ffc107cc;
+    }
+    /* Gallery Section */
+    #gallery {
+      max-width: 1000px;
+      margin: 70px auto 70px;
+      padding: 0 20px;
+    }
+    #gallery h2 {
+      font-size: 34px;
+      color: #0d47a1;
+      margin-bottom: 20px;
+      font-weight: 900;
+      text-align: center;
+      user-select: none;
+    }
+    #gallery p {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #555;
+      font-size: 18px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #gallery .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+    .gallery-item {
+      max-width: 320px;
+      background: white;
+      border-radius: 15px;
+      padding: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      user-select: none;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      max-height: 220px;
+    }
+    .gallery-item h3 {
+      margin-top: 12px;
+      color: #2d89ef;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .gallery-item p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+    /* Donate Section */
+    #donate {
+      background: white;
+      max-width: 700px;
+      margin: 0 auto 70px;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      text-align: center;
+      user-select: none;
+    }
+    #donate h2 {
+      color: #0d47a1;
+      font-size: 32px;
+      margin-bottom: 25px;
+      font-weight: 900;
+    }
+    #donate p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    #donate .btn-donate {
+      background: #ffca28;
+      color: #0d47a1;
+      border: none;
+      padding: 15px 50px;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgb(255 202 40 / 0.7);
+      transition: background 0.3s ease;
+      user-select: none;
+      display: inline-block;
+    }
+    #donate .btn-donate:hover {
+      background: #ffc107cc;
+    }
+    /* Contact Section */
+    #contact {
+      max-width: 700px;
+      margin: 0 auto 70px;
+      padding: 40px 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      user-select: none;
+    }
+    #contact h2 {
+      color: #0d47a1;
+      font-size: 32px;
+      margin-bottom: 25px;
+      font-weight: 900;
+      text-align: center;
+    }
+    #contact p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    #contact label {
+      font-weight: 600;
+      font-size: 15px;
+      color: #222;
+    }
+    #contact input, #contact textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1.8px solid #bbb;
+      font-size: 16px;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      border-color: #0d47a1;
+      box-shadow: 0 0 6px #0d47a1aa;
+    }
+    #contact input[type="submit"] {
+      background: #0d47a1;
+      color: white;
+      border: none;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 40px;
+      padding: 14px 0;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    #contact input[type="submit"]:hover {
+      background: #093876;
     }
     /* Responsive */
-    @media(max-width: 600px) {
+    @media(max-width: 800px) {
+      #stats {
+        flex-direction: column;
+        gap: 35px;
+      }
+      #gallery .gallery-grid {
+        flex-direction: column;
+        gap: 30px;
+      }
       header {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
       }
       nav a {
-        margin: 12px 15px 0 15px;
+        margin: 10px 12px 0 12px;
       }
-      main {
-        margin: 30px 10px 50px;
-        padding: 0 10px;
+      #hero {
+        height: 450px;
       }
-      section {
-        padding: 25px 20px;
+      #hero-content h2 {
+        font-size: 34px;
       }
-      h2 {
-        font-size: 24px;
+      #hero-content p {
+        font-size: 18px;
       }
-      .btn-primary, .btn-donate {
-        padding: 12px 28px;
-        font-size: 16px;
-      }
-      #donateModal .modal-content {
-        margin: 30% 10px;
-        padding: 25px 20px;
+      #hero-content button {
+        font-size: 18px;
+        padding: 12px 30px;
       }
     }
   </style>
@@ -188,116 +384,103 @@
 <header>
   <h1>PawsCare Hub</h1>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#services">Our Work</a>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#stats">Stats</a>
+    <a href="#gallery">Gallery</a>
     <a href="#donate">Donate</a>
+    <a href="#volunteer">Volunteer</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<main>
-
-  <section id="home">
-    <h2>Saving Lives One Paw at a Time</h2>
-    <p>At <strong>PawsCare Hub</strong>, every day we rescue abandoned, injured, and helpless dogs. Our dedicated team works tirelessly to provide medical treatment, food, shelter, and a chance at a better life.</p>
-    <p>So far, we've treated over <strong>350 dogs</strong> and successfully helped <strong>120+ dogs find loving homes</strong>. But the journey is far from over — your support keeps the hope alive.</p>
-    <button class="btn-primary" onclick="openDonateModal()">Donate Now & Help Save More Lives</button>
-  </section>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Founded in 2020, PawsCare Hub is a passionate community of animal lovers and volunteers dedicated to animal welfare and rescue. We believe every dog deserves a second chance, regardless of age, breed, or condition.</p>
-    <p>Our mission is not just rescue but rehabilitation and responsible adoption, educating the community about compassionate pet ownership and prevention of cruelty.</p>
-  </section>
-
-  <section id="services">
-    <h2>Our Work & Services</h2>
-    <ul>
-      <li><strong>Medical Treatment:</strong> Vaccinations, wound care, parasite control, surgeries, and emergency care.</li>
-      <li><strong>Rehabilitation:</strong> Nutrition, shelter, and behavioral training to prepare dogs for adoption.</li>
-      <li><strong>Adoption Facilitation:</strong> Connecting loving families with rescued dogs and thorough vetting.</li>
-      <li><strong>Community Outreach:</strong> Awareness campaigns, school programs, and animal welfare workshops.</li>
-      <li><strong>Emergency Rescue:</strong> Rapid response team for injured or abandoned dogs in distress.</li>
-    </ul>
-  </section>
-
-  <section id="donate">
-    <h2>Donate & Make a Difference</h2>
-    <p>Your generosity helps us continue providing life-saving care and hope to countless dogs. Every rupee goes towards food, medicine, shelter, and adoption support.</p>
-    <button class="btn-donate" onclick="openDonateModal()">Donate Now</button>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>If you want to volunteer, adopt, or learn more about our work, please reach out to us.</p>
-    <form onsubmit="alert('Thank you for contacting PawsCare Hub! We will get back to you soon.'); return false;">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <input type="submit" value="Send Message" />
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  &copy; 2025 PawsCare Hub. All rights reserved.
-</footer>
-
-<!-- Donate Modal -->
-<div id="donateModal">
-  <div class="modal-content">
-    <button class="close-btn" onclick="closeDonateModal()">&times;</button>
-    <h3>Choose Your Donation Method</h3>
-    <button class="btn-donate" onclick="window.open('https://paypal.me/pawscarehub', '_blank')">Donate via PayPal</button>
-    <p style="margin: 15px 0; font-weight: 600;">OR</p>
-    <p><strong>UPI ID:</strong> <span style="color:#2d89ef; font-weight:700;">8824486181@ptyes</span></p>
+<section id="hero">
+  <div id="hero-content">
+    <h2>Changing Lives, One Paw at a Time</h2>
+    <p>Your kindness brings hope and healing to thousands of abandoned dogs.</p>
+    <button onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">Donate Now</button>
   </div>
-</div>
+</section>
+
+<section id="stats">
+  <div class="stat-box">
+    <h3>350+</h3>
+    <p>Dogs Rescued</p>
+  </div>
+  <div class="stat-box">
+    <h3>320+</h3>
+    <p>Dogs Treated</p>
+  </div>
+  <div class="stat-box">
+    <h3>120+</h3>
+    <p>Dogs Adopted</p>
+  </div>
+  <div class="stat-box">
+    <h3>50+</h3>
+    <p>Dedicated Volunteers</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About PawsCare Hub</h2>
+  <p>Founded in 2018, PawsCare Hub started with a small team of passionate animal lovers who couldn’t ignore the plight of abandoned and injured dogs roaming the streets. Over the years, we have rescued hundreds of dogs, providing emergency medical care, shelter, and finding loving forever homes for them.</p>
+  <p>Our mission is to create a safer, healthier environment where every dog has a chance to live with dignity and love. We believe in transparency, compassion, and dedication to the cause of animal welfare.</p>
+</section>
+
+<section id="gallery">
+  <h2>Our Rescued Dogs</h2>
+  <p>Meet some of the brave souls we've rescued and cared for. Each one has a story of hope, healing, and a second chance at life.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/dog1.jpg" alt="Meet Our Brave Rescued Buddy" />
+      <h3>Meet Our Brave Rescued Buddy</h3>
+      <p>Found abandoned near a busy highway, this little warrior was barely able to walk. After urgent treatment and care, he’s now full of life and ready for a loving home.</p>
+    </div>
+    <div class="gallery-item">
+      <img src="images/dog2.jpg" alt="Healing Paws, Happy Hearts" />
+      <h3>Healing Paws, Happy Hearts</h3>
+      <p>Rescued from severe malnutrition and infections, this dog received weeks of dedicated medical care. Today, he’s playful and loves being around people.</p>
+    </div>
+    <div class="gallery-item">
+      <img src="images/dog3.jpg" alt="From Streets to Safety" />
+      <h3>From Streets to Safety</h3>
+      <p>Found wandering and injured in the city streets, this brave soul was rescued just in time. After surgeries and rehab, he’s now safe, healthy, and waiting for his forever family.</p>
+    </div>
+  </div>
+</section>
+
+<section id="donate">
+  <h2>Support Our Mission</h2>
+  <p>Your donation helps us provide food, medical care, and shelter to countless dogs in need. Every contribution, big or small, makes a huge difference.</p>
+  <button class="btn-donate" onclick="openDonateModal()">Donate Now</button>
+</section>
+
+<section id="volunteer">
+  <h2>Become a Volunteer</h2>
+  <p>Join our passionate team and help us rescue, treat, and care for abandoned dogs. Your time and effort can change lives!</p>
+  <button onclick="alert('Thank you for your interest! Please contact us through our social media or email.')">Join Us</button>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>If you have questions or want to get involved, please use the form below. We’d love to hear from you!</p>
+  <form>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required />
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Your email address" required />
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+    <input type="submit" value="Send Message" />
+  </form>
+</section>
 
 <script>
   function openDonateModal() {
-    document.getElementById('donateModal').style.display = 'block';
-  }
-  function closeDonateModal() {
-    document.getElementById('donateModal').style.display = 'none';
-  }
-  // Close modal on outside click
-  window.onclick = function(event) {
-    const modal = document.getElementById('donateModal');
-    if (event.target === modal) {
-      closeDonateModal();
-    }
+    alert("Donate via:\n1) PayPal: https://paypal.me/pawscarehub\n2) UPI ID: 8824486181@ptyes\n\nThank you for your support!");
   }
 </script>
 
 </body>
 </html>
-<section id="gallery">
-  <h2>Our Rescued Dogs</h2>
-  <p>Meet some of the brave souls we've rescued and cared for. Each one has a story of hope, healing, and a second chance at life.</p>
-  <div style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; margin-top:20px;">
-    
-    <div style="max-width:300px; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius:15px; padding:15px; background:#fff;">
-      <img src="images/dog1.jpg" alt="Meet Our Brave Rescued Buddy" style="width:100%; border-radius:12px; object-fit: cover; max-height: 220px;" />
-      <p style="margin-top:12px; font-weight:700; color:#2d89ef; font-size:18px;">Meet Our Brave Rescued Buddy</p>
-      <p style="font-size:14px; color:#555;">Found abandoned near a busy highway, this little warrior was barely able to walk. After urgent treatment and care, he’s now full of life and ready for a loving home.</p>
-    </div>
-
-    <div style="max-width:300px; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius:15px; padding:15px; background:#fff;">
-      <img src="images/dog2.jpg" alt="Healing Paws, Happy Hearts" style="width:100%; border-radius:12px; object-fit: cover; max-height: 220px;" />
-      <p style="margin-top:12px; font-weight:700; color:#2d89ef; font-size:18px;">Healing Paws, Happy Hearts</p>
-      <p style="font-size:14px; color:#555;">Rescued from severe malnutrition and infections, this dog received weeks of dedicated medical care. Today, he’s playful and loves being around people.</p>
-    </div>
-
-    <div style="max-width:300px; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius:15px; padding:15px; background:#fff;">
-      <img src="images/dog3.jpg" alt="From Streets to Safety" style="width:100%; border-radius:12px; object-fit: cover; max-height: 220px;" />
-      <p s
-             
+ 
