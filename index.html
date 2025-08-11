@@ -1,383 +1,298 @@
-# pawscarehub
-
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PawsCare Hub - Saving Lives One Paw at a Time</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: #f9fafc;
-      color: #333;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PawsCare Hub - Saving Lives One Paw at a Time</title>
+<style>
+  /* Basic Reset and Fonts */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #f5f7fa;
+    color: #222;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header {
+    background: #0b3d91;
+    color: white;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  header h1 {
+    font-size: 30px;
+    user-select: none;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ffd600;
+  }
+  section {
+    padding: 60px 10%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  /* Hero Section */
+  #hero {
+    background: url('images/hero_dog.jpg') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    border-radius: 12px;
+    margin-bottom: 50px;
+  }
+  #hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(11, 61, 145, 0.7);
+    border-radius: 12px;
+  }
+  #hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  #hero-content h2 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 15px;
+  }
+  #hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  #hero-content button {
+    background: #ffd600;
+    border: none;
+    padding: 16px 48px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+  }
+  #hero-content button:hover {
+    background: #ffea00;
+  }
+  /* Stats */
+  #stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  .stat-box {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.07);
+    flex: 1 1 160px;
+    text-align: center;
+  }
+  .stat-box h3 {
+    font-size: 40px;
+    color: #0b3d91;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .stat-box p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+  }
+  /* About */
+  #about h2 {
+    color: #0b3d91;
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  #about p {
+    max-width: 700px;
+    margin: 0 auto 15px;
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+  }
+  /* Gallery */
+  #gallery h2 {
+    color: #0b3d91;
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  #gallery p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+  }
+  .gallery-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .gallery-item {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+    max-width: 300px;
+    padding: 15px;
+    text-align: center;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .gallery-item h3 {
+    margin-top: 15px;
+    color: #1e88e5;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .gallery-item p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.4;
+  }
+  /* Donate */
+  #donate {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+    max-width: 600px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+  #donate h2 {
+    font-size: 36px;
+    color: #0b3d91;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+  #donate p {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 30px;
+  }
+  #donate button {
+    background: #ffd600;
+    border: none;
+    padding: 18px 55px;
+    font-weight: 700;
+    font-size: 22px;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+  }
+  #donate button:hover {
+    background: #ffea00;
+  }
+  /* Modal styles */
+  .modal-bg {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  .modal-content {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+  .modal-content h3 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #0b3d91;
+  }
+  .modal-content a {
+    display: inline-block;
+    margin: 12px 20px;
+    padding: 15px 35px;
+    background: #0b3d91;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    user-select: none;
+  }
+  .modal-content a:hover {
+    background: #094080;
+  }
+  .close-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: 900;
+    color: #0b3d91;
+  }
+  /* Footer */
+  footer {
+    background: #0b3d91;
+    color: white;
+    text-align: center;
+    padding: 25px 10%;
+    font-size: 16px;
+    user-select: none;
+  }
+  /* Responsive */
+  @media(max-width: 850px) {
+    #stats {
       flex-direction: column;
+      gap: 35px;
+      align-items: center;
+    }
+    .gallery-grid {
+      flex-direction: column;
+      gap: 35px;
+      align-items: center;
     }
     header {
-      background: #0d47a1;
-      color: white;
-      padding: 20px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    }
-    header h1 {
-      font-size: 32px;
-      letter-spacing: 2px;
-      font-weight: 900;
-      cursor: default;
-      user-select: none;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 600;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #ffca28;
-    }
-    /* Hero Banner */
-    #hero {
-      background: url('images/hero_dog.jpg') no-repeat center center/cover;
-      height: 550px;
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 20px;
-      position: relative;
+      gap: 15px;
     }
-    #hero::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(13, 71, 161, 0.65);
-      z-index: 1;
-    }
-    #hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-    }
-    #hero-content h2 {
-      font-size: 48px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
-    #hero-content p {
-      font-size: 22px;
-      margin-bottom: 30px;
-      font-weight: 500;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
-    }
-    #hero-content button {
-      background: #ffca28;
-      color: #0d47a1;
-      border: none;
-      padding: 15px 45px;
-      font-size: 20px;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgb(255 202 40 / 0.6);
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    #hero-content button:hover {
-      background: #ffc107cc;
-    }
-    /* Stats Section */
-    #stats {
-      background: white;
-      padding: 60px 10%;
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-      box-shadow: 0 10px 25px rgb(0 0 0 / 0.05);
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-    .stat-box {
-      flex: 1 1 160px;
-    }
-    .stat-box h3 {
-      font-size: 44px;
-      color: #0d47a1;
-      font-weight: 900;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-    .stat-box p {
-      font-size: 18px;
-      font-weight: 600;
-      color: #555;
-      user-select: none;
-    }
-    /* About Section */
-    #about {
-      max-width: 900px;
-      margin: 70px auto 80px;
-      padding: 0 20px;
-    }
-    #about h2 {
-      font-size: 34px;
-      color: #0d47a1;
-      margin-bottom: 25px;
-      font-weight: 900;
-      text-align: center;
-      user-select: none;
-    }
-    #about p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #444;
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 20px;
-    }
-    /* Volunteer Section */
-    #volunteer {
-      background: #0d47a1;
-      color: white;
-      padding: 60px 10%;
-      text-align: center;
-      user-select: none;
-    }
-    #volunteer h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      font-weight: 900;
-    }
-    #volunteer p {
-      font-size: 18px;
-      margin-bottom: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 500;
-    }
-    #volunteer button {
-      background: #ffca28;
-      color: #0d47a1;
-      border: none;
-      padding: 14px 40px;
-      font-size: 20px;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgb(255 202 40 / 0.6);
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    #volunteer button:hover {
-      background: #ffc107cc;
-    }
-    /* Gallery Section */
-    #gallery {
-      max-width: 1000px;
-      margin: 70px auto 70px;
-      padding: 0 20px;
-    }
-    #gallery h2 {
-      font-size: 34px;
-      color: #0d47a1;
-      margin-bottom: 20px;
-      font-weight: 900;
-      text-align: center;
-      user-select: none;
-    }
-    #gallery p {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #555;
-      font-size: 18px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    #gallery .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      justify-content: center;
-    }
-    .gallery-item {
-      max-width: 320px;
-      background: white;
-      border-radius: 15px;
-      padding: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      user-select: none;
-    }
-    .gallery-item img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      max-height: 220px;
-    }
-    .gallery-item h3 {
-      margin-top: 12px;
-      color: #2d89ef;
-      font-weight: 700;
-      font-size: 20px;
-    }
-    .gallery-item p {
-      font-size: 14px;
-      color: #555;
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-    /* Donate Section */
-    #donate {
-      background: white;
-      max-width: 700px;
-      margin: 0 auto 70px;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      text-align: center;
-      user-select: none;
-    }
-    #donate h2 {
-      color: #0d47a1;
-      font-size: 32px;
-      margin-bottom: 25px;
-      font-weight: 900;
-    }
-    #donate p {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-    #donate .btn-donate {
-      background: #ffca28;
-      color: #0d47a1;
-      border: none;
-      padding: 15px 50px;
-      font-size: 20px;
-      font-weight: 700;
-      border-radius: 40px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgb(255 202 40 / 0.7);
-      transition: background 0.3s ease;
-      user-select: none;
-      display: inline-block;
-    }
-    #donate .btn-donate:hover {
-      background: #ffc107cc;
-    }
-    /* Contact Section */
-    #contact {
-      max-width: 700px;
-      margin: 0 auto 70px;
-      padding: 40px 30px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      user-select: none;
-    }
-    #contact h2 {
-      color: #0d47a1;
-      font-size: 32px;
-      margin-bottom: 25px;
-      font-weight: 900;
-      text-align: center;
-    }
-    #contact p {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    #contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    #contact label {
-      font-weight: 600;
-      font-size: 15px;
-      color: #222;
-    }
-    #contact input, #contact textarea {
-      padding: 12px 15px;
-      border-radius: 8px;
-      border: 1.8px solid #bbb;
-      font-size: 16px;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-    }
-    #contact input:focus, #contact textarea:focus {
-      outline: none;
-      border-color: #0d47a1;
-      box-shadow: 0 0 6px #0d47a1aa;
-    }
-    #contact input[type="submit"] {
-      background: #0d47a1;
-      color: white;
-      border: none;
-      font-weight: 700;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 40px;
-      padding: 14px 0;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-    #contact input[type="submit"]:hover {
-      background: #093876;
-    }
-    /* Responsive */
-    @media(max-width: 800px) {
-      #stats {
-        flex-direction: column;
-        gap: 35px;
-      }
-      #gallery .gallery-grid {
-        flex-direction: column;
-        gap: 30px;
-      }
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav a {
-        margin: 10px 12px 0 12px;
-      }
-      #hero {
-        height: 450px;
-      }
-      #hero-content h2 {
-        font-size: 34px;
-      }
-      #hero-content p {
-        font-size: 18px;
-      }
-      #hero-content button {
-        font-size: 18px;
-        padding: 12px 30px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
@@ -396,8 +311,8 @@
 
 <section id="hero">
   <div id="hero-content">
-    <h2>Changing Lives, One Paw at a Time</h2>
-    <p>Your kindness brings hope and healing to thousands of abandoned dogs.</p>
+    <h2>Saving Lives, One Paw at a Time</h2>
+    <p>Your support changes the fate of abandoned dogs every day.</p>
     <button onclick="document.getElementById('donate').scrollIntoView({behavior:'smooth'})">Donate Now</button>
   </div>
 </section>
@@ -423,64 +338,87 @@
 
 <section id="about">
   <h2>About PawsCare Hub</h2>
-  <p>Founded in 2018, PawsCare Hub started with a small team of passionate animal lovers who couldn’t ignore the plight of abandoned and injured dogs roaming the streets. Over the years, we have rescued hundreds of dogs, providing emergency medical care, shelter, and finding loving forever homes for them.</p>
-  <p>Our mission is to create a safer, healthier environment where every dog has a chance to live with dignity and love. We believe in transparency, compassion, and dedication to the cause of animal welfare.</p>
+  <p>PawsCare Hub began in 2018 with a small group of animal lovers determined to save abandoned and injured dogs from the streets. Over the years, we have rescued hundreds, provided critical medical care, and found loving homes.</p>
+  <p>Our mission is to create a world where every dog is safe, healthy, and loved. With your support, we continue this journey of hope and healing.</p>
 </section>
 
 <section id="gallery">
   <h2>Our Rescued Dogs</h2>
-  <p>Meet some of the brave souls we've rescued and cared for. Each one has a story of hope, healing, and a second chance at life.</p>
+  <p>These brave souls have fought hard and deserve a second chance at life.</p>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="images/dog1.jpg" alt="Meet Our Brave Rescued Buddy" />
-      <h3>Meet Our Brave Rescued Buddy</h3>
-      <p>Found abandoned near a busy highway, this little warrior was barely able to walk. After urgent treatment and care, he’s now full of life and ready for a loving home.</p>
+      <img src="images/dog1.jpg" alt="Brave Rescued Buddy" />
+      <h3>Brave Rescued Buddy</h3>
+      <p>Abandoned near a busy highway, he was found weak and injured. With urgent care, he's now healthy and playful.</p>
     </div>
     <div class="gallery-item">
-      <img src="images/dog2.jpg" alt="Healing Paws, Happy Hearts" />
-      <h3>Healing Paws, Happy Hearts</h3>
-      <p>Rescued from severe malnutrition and infections, this dog received weeks of dedicated medical care. Today, he’s playful and loves being around people.</p>
+      <img src="images/dog2.jpg" alt="Healing Paws" />
+      <h3>Healing Paws</h3>
+      <p>Rescued from malnutrition and infection, this pup received weeks of care and is now full of joy and energy.</p>
     </div>
     <div class="gallery-item">
       <img src="images/dog3.jpg" alt="From Streets to Safety" />
       <h3>From Streets to Safety</h3>
-      <p>Found wandering and injured in the city streets, this brave soul was rescued just in time. After surgeries and rehab, he’s now safe, healthy, and waiting for his forever family.</p>
+      <p>Found injured on the streets, he underwent surgery and rehab and is now ready for adoption.</p>
     </div>
   </div>
 </section>
 
 <section id="donate">
   <h2>Support Our Mission</h2>
-  <p>Your donation helps us provide food, medical care, and shelter to countless dogs in need. Every contribution, big or small, makes a huge difference.</p>
-  <button class="btn-donate" onclick="openDonateModal()">Donate Now</button>
+  <p>Your donation helps us provide food, medicine, and shelter for many dogs in need. Every bit counts!</p>
+  <button onclick="openDonateModal()">Donate Now</button>
 </section>
 
 <section id="volunteer">
   <h2>Become a Volunteer</h2>
-  <p>Join our passionate team and help us rescue, treat, and care for abandoned dogs. Your time and effort can change lives!</p>
-  <button onclick="alert('Thank you for your interest! Please contact us through our social media or email.')">Join Us</button>
+  <p>Join our team to rescue, care for, and find homes for abandoned dogs. Your time can save lives!</p>
+  <button onclick="alert('Thanks for your interest! Please contact us via social media or email.')">Join Us</button>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <p>If you have questions or want to get involved, please use the form below. We’d love to hear from you!</p>
+  <p>Have questions or want to help? Use the form below, we’d love to hear from you!</p>
   <form>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your full name" required />
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Your email address" required />
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+    <label for="name">Name</label><br />
+    <input type="text" id="name" name="name" placeholder="Your full name" required /><br /><br />
+    <label for="email">Email</label><br />
+    <input type="email" id="email" name="email" placeholder="Your email address" required /><br /><br />
+    <label for="message">Message</label><br />
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea><br /><br />
     <input type="submit" value="Send Message" />
   </form>
 </section>
 
+<footer>
+  &copy; 2025 PawsCare Hub | All rights reserved.
+</footer>
+
+<!-- Donate Modal -->
+<div class="modal-bg" id="donateModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeDonateModal()">&times;</span>
+    <h3>Donate via</h3>
+    <a href="https://paypal.me/pawscarehub" target="_blank" rel="noopener noreferrer">PayPal</a>
+    <a href="upi://pay?pa=8824486181@ptyes&pn=PawsCare%20Hub" target="_blank" rel="noopener noreferrer">UPI ID</a>
+  </div>
+</div>
+
 <script>
   function openDonateModal() {
-    alert("Donate via:\n1) PayPal: https://paypal.me/pawscarehub\n2) UPI ID: 8824486181@ptyes\n\nThank you for your support!");
+    document.getElementById('donateModal').style.display = 'flex';
+  }
+  function closeDonateModal() {
+    document.getElementById('donateModal').style.display = 'none';
+  }
+  // Close modal if clicked outside content
+  window.onclick = function(event) {
+    const modal = document.getElementById('donateModal');
+    if(event.target === modal) {
+      closeDonateModal();
+    }
   }
 </script>
 
 </body>
 </html>
- 
